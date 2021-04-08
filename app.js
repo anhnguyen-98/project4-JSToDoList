@@ -36,8 +36,9 @@ const addTodoItem = (e) => {
 const checkAndDeleteTodoItem = (e) => {
     //take the tag where you click on
     const clickedTarget = e.target;
+    console.log(e.target.parentElement);
     //take the class name of this tag
-    const clickedBtn = clickedTarget.classList[0];
+    const clickedBtn = clickedTarget.classList.value;
 
     if (clickedBtn === 'completed-btn') {
         const todoItem = clickedTarget.parentElement;
@@ -46,9 +47,7 @@ const checkAndDeleteTodoItem = (e) => {
     if (clickedBtn === 'trash-btn') {
         const todoItem = clickedTarget.parentElement;
         todoItem.classList.add('disappear');
-        todoItem.addEventListener('transitionend', () => {
-            todoItem.remove();
-        });
+        setTimeout(() => todoItem.remove(), 500 )
     }
 } 
 

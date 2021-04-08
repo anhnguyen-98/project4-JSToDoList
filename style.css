@@ -50,7 +50,7 @@ form {
     justify-content: center;
 }
 .todo-list {
-    width: 435.88px;
+    width: 450px;
 }
 
 .todo-item {
@@ -65,8 +65,7 @@ form {
     transition: all 0.3s ease;
     flex-wrap: wrap;
     word-break: break-all;
-    animation-name: appearance;
-    animation-duration: 0.4s;
+    animation: appearance 0.4s;
 }
 @keyframes appearance {
     from {opacity: 0;}
@@ -100,9 +99,19 @@ form {
     text-decoration: line-through;
 }
 .disappear {
-    transform: translateX(100%);
-    opacity: 0;
+    animation: removed-item-animation .5s forwards ;
+} 
+@keyframes removed-item-animation {
+    0% {
+        opacity: 1;
+        transform: rotateZ(0);
+    }   
+    100% {
+        opacity: 0;
+        transform: translateY(600px) rotateZ(90deg);
+    }
 }
+
 #title {
     position: fixed;
     right: 30px;
@@ -112,21 +121,29 @@ form {
     letter-spacing: 2px;
     font-weight: 0.3;
 }
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 460px) {
     .todo-input {
         width: 300px;
         font-size: 20px;
     }
     .button {font-size: 20px;}
-    .todo-list {width: 335.88px;}
+    .todo-list {
+        min-width: 300px;
+        margin: 0 20px;
+    }
     .todo-item {font-size: 15px;}
+    #title {font-size: 10px;}
 }
 @media only screen and (max-width: 320px) {
     .todo-input {
-        width: 260px;
+        width: 220px;
         font-size: 20px;
     }
     .button {font-size: 20px;}
-    .todo-list {width: 295.88px;}
+    .todo-list {
+        min-width: 250px;
+        margin: 0 20px;
+    }
     .todo-item {font-size: 15px;}
+    #title {font-size: 8px;}
 }
